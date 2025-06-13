@@ -5,6 +5,7 @@ import HeroSection from '../../components/common/HeroSection';
 import Button from '../../components/ui/Button';
 
 import Card from '../../components/ui/Card';
+import './index.css';
 
 const CoursePage = () => {
   const [contactForm, setContactForm] = useState({
@@ -42,7 +43,10 @@ const CoursePage = () => {
   const skills = [
     { icon: '/images/img_ellipse_21.png', title: 'Programming Proficiency' },
     { icon: '/images/img_ellipse_24.png', title: 'Software Design Principles' },
-    { icon: '/images/img_ellipse_22.png', title: 'Object-Oriented Programming' },
+    {
+      icon: '/images/img_ellipse_22.png',
+      title: 'Object-Oriented Programming',
+    },
     { icon: '/images/img_ellipse_27.png', title: 'Agile Development' },
     { icon: '/images/img_ellipse_25.png', title: 'Software Documentation' },
     { icon: '/images/img_ellipse_26.png', title: 'Critical Thinking' },
@@ -115,7 +119,7 @@ const CoursePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex justify-center items-center flex-col">
       <Header />
       <HeroSection />
 
@@ -472,23 +476,36 @@ const CoursePage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {relatedCourses.map((course, index) => (
-              <Card key={index} className="bg-[#f5f5f5] rounded-[25px] overflow-hidden">
+              <Card
+                key={index}
+                className="bg-[#f5f5f5] rounded-[25px] overflow-hidden related-courses-card"
+              >
                 <div className="p-4">
                   <img src="/images/img_pearson.png" alt="Pearson" className="h-11 w-38 mb-4" />
                   <p className="text-lg font-light text-black leading-7 mb-6">{course.title}</p>
+
                   <div className="relative">
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="w-full h-48 object-cover rounded-b-[25px]"
-                    />
-                    <div className="absolute top-0 left-0 w-full h-15 bg-gradient-to-b from-[#f5f5f5] via-[#f6f6f6ce] to-transparent"></div>
-                    <div className="absolute bottom-4 right-4 bg-[#eca22d] rounded-[14px] p-2">
+                    <div className="disable-on-hover ">
                       <img
-                        src="/images/img_vector_white_a700_15x33.svg"
-                        alt="arrow"
-                        className="w-4 h-8"
+                        src={course.image}
+                        alt={course.title}
+                        className="w-full h-48 object-cover rounded-b-[25px]"
                       />
+                      <div className="absolute top-0 left-0 w-full h-15 bg-gradient-to-b from-[#f5f5f5] via-[#f6f6f6ce] to-transparent"></div>
+                      <div className="absolute bottom-4 right-4 bg-[#eca22d] rounded-[14px] p-2">
+                        <img
+                          src="/images/img_vector_white_a700_15x33.svg"
+                          alt="arrow"
+                          className="w-4 h-8"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="enable-on-hover bg-[#eca22d] rounded-[14px] p-2">
+                      <div>Duration</div>
+                      <div>Course Level</div>
+                      <div>Credits</div>
+                      <div>Modules</div>
                     </div>
                   </div>
                 </div>

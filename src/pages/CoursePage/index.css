@@ -1,0 +1,33 @@
+.disable-on-hover {
+  position: absolute;
+  transition: 0.5s ease all;
+  top: 0px;
+  height: 200px;
+}
+
+.enable-on-hover {
+  transition: 0.5s ease all;
+}
+
+.related-courses-card {
+  .disable-on-hover {
+    opacity: 1;
+  }
+
+  .enable-on-hover {
+    transition: 0.3s ease all;
+    opacity: 0;
+  }
+}
+
+.related-courses-card:hover {
+  .disable-on-hover {
+    transition: 0.3s ease all;
+    opacity: 0;
+  }
+
+  .enable-on-hover {
+    transition: 0.3s ease all;
+    opacity: 1;
+  }
+}

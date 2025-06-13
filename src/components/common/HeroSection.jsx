@@ -2,20 +2,25 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-white">
+    <section className="max-w-7xl relative bg-white">
       {/* Back to Programs Link */}
-      <div className="max-w-7xl mx-auto pt-6">
+      <div className="mx-auto pt-6">
         <div className="flex items-center space-x-2 text-black">
           <img src="/images/img_vector_black_900_8x11.svg" alt="back arrow" className="w-2 h-3" />
           <span className="text-base font-medium">Back to all Programs</span>
         </div>
       </div>
 
+      {/* Pearson Badge */}
+      <div className="bg-[#f6f6f6] rounded-r-[54px] p-6 w-[250px] mt-[30px]">
+        <img src="/images/img_pearson.png" alt="Pearson" className="h-14 w-47" />
+      </div>
+
       {/* Main Hero Content */}
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 my-24">
             <div className="space-y-4">
               <h1 className="text-4xl font-light text-black leading-tight">
                 Higher National diploma international
@@ -27,7 +32,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - Course Image */}
-          <div className="flex justify-center">
+          <div className="flex justify-center absolute right-[0px]">
             <img
               src="/images/img_rectangle_58.png"
               alt="Computing Course"
@@ -38,9 +43,9 @@ const HeroSection = () => {
       </div>
 
       {/* Course Stats Bar */}
-      <div className="bg-[#0c2d46] py-6" style={{ width: '1178px', height: '98px', flexShrink: 0 }}>
+      <div className="bg-[#0c2d46] py-6" style={{ width: '1000px', height: '98px', flexShrink: 0 }}>
         <div className="max-w-5xl px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white pr-[150px]">
             <div className="flex items-center space-x-3">
               <img src="/images/img_vector_yellow_800.svg" alt="duration" className="w-10 h-10" />
               <div>
@@ -71,11 +76,6 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Pearson Badge */}
-      <div className="absolute left-0 top-64 bg-[#f6f6f6] rounded-r-[54px] p-6">
-        <img src="/images/img_pearson.png" alt="Pearson" className="h-14 w-47" />
       </div>
     </section>
   );

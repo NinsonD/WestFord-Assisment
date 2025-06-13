@@ -7,14 +7,14 @@ const Footer = () => {
     email: '',
     phone: '',
     message: '',
-    agreeToContact: false
+    agreeToContact: false,
   });
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
@@ -30,20 +30,42 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <img src="/images/img_asset_13x_1.png" alt="DeMont Logo" className="h-[87px] w-[282px]" />
+            <img
+              src="/images/img_asset_13x_1.png"
+              alt="DeMont Logo"
+              className="h-[87px] w-[282px]"
+            />
             <div className="flex items-start space-x-3">
               <img src="/images/img_location.svg" alt="location" className="w-6 h-6 mt-1" />
-              <p className="text-sm leading-6">802, 8th Floor, Block No. 10, Academic City – Dubai</p>
+              <p className="text-sm leading-6">
+                802, 8th Floor, Block No. 10, Academic City – Dubai
+              </p>
             </div>
             <div className="flex items-center space-x-3">
               <img src="/images/img_tollfreewhiteorange_1.png" alt="phone" className="w-8 h-8" />
               <span className="text-sm">800 33 666 8</span>
             </div>
             <div className="flex space-x-4">
-              <img src="/images/img_facebook.svg" alt="Facebook" className="w-9 h-9 cursor-pointer hover:opacity-80" />
-              <img src="/images/img_twitter.svg" alt="Twitter" className="w-9 h-9 cursor-pointer hover:opacity-80" />
-              <img src="/images/img_insta.svg" alt="Instagram" className="w-9 h-9 cursor-pointer hover:opacity-80" />
-              <img src="/images/img_linkedin.svg" alt="LinkedIn" className="w-9 h-9 cursor-pointer hover:opacity-80" />
+              <img
+                src="/images/img_facebook.svg"
+                alt="Facebook"
+                className="w-9 h-9 cursor-pointer hover:opacity-80"
+              />
+              <img
+                src="/images/img_twitter.svg"
+                alt="Twitter"
+                className="w-9 h-9 cursor-pointer hover:opacity-80"
+              />
+              <img
+                src="/images/img_insta.svg"
+                alt="Instagram"
+                className="w-9 h-9 cursor-pointer hover:opacity-80"
+              />
+              <img
+                src="/images/img_linkedin.svg"
+                alt="LinkedIn"
+                className="w-9 h-9 cursor-pointer hover:opacity-80"
+              />
             </div>
           </div>
 
@@ -53,23 +75,33 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/about" className="text-sm hover:text-[#eca22d]">About Us</Link>
+                <Link to="/about" className="text-sm hover:text-[#eca22d]">
+                  About Us
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/programs" className="text-sm hover:text-[#eca22d]">Programs</Link>
+                <Link to="/programs" className="text-sm hover:text-[#eca22d]">
+                  Programs
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/partners" className="text-sm hover:text-[#eca22d]">Our Partners</Link>
+                <Link to="/partners" className="text-sm hover:text-[#eca22d]">
+                  Our Partners
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/blogs" className="text-sm hover:text-[#eca22d]">Our Blogs</Link>
+                <Link to="/blogs" className="text-sm hover:text-[#eca22d]">
+                  Our Blogs
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/contact" className="text-sm hover:text-[#eca22d]">Contact Us</Link>
+                <Link to="/contact" className="text-sm hover:text-[#eca22d]">
+                  Contact Us
+                </Link>
               </div>
             </div>
           </div>
@@ -80,23 +112,33 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/skill-master" className="text-sm hover:text-[#eca22d]">Skill Master</Link>
+                <Link to="/skill-master" className="text-sm hover:text-[#eca22d]">
+                  Skill Master
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/delead" className="text-sm hover:text-[#eca22d]">DeLead</Link>
+                <Link to="/delead" className="text-sm hover:text-[#eca22d]">
+                  DeLead
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/decode" className="text-sm hover:text-[#eca22d]">DeCode</Link>
+                <Link to="/decode" className="text-sm hover:text-[#eca22d]">
+                  DeCode
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/privacy" className="text-sm hover:text-[#eca22d]">Privacy Policy</Link>
+                <Link to="/privacy" className="text-sm hover:text-[#eca22d]">
+                  Privacy Policy
+                </Link>
               </div>
               <div className="flex items-center space-x-2">
                 <img src="/images/img_line_16.svg" alt="line" className="w-0.5 h-2" />
-                <Link to="/refund" className="text-sm hover:text-[#eca22d]">Refund Policy</Link>
+                <Link to="/refund" className="text-sm hover:text-[#eca22d]">
+                  Refund Policy
+                </Link>
               </div>
             </div>
           </div>
@@ -158,12 +200,11 @@ const Footer = () => {
                   className="w-4 h-4 mt-1 bg-[#d9d9d9] rounded"
                   required
                 />
-                <p className="text-xs leading-4">I agree to share my contact info and receive exclusive offers via email or call</p>
+                <p className="text-xs leading-4">
+                  I agree to share my contact info and receive exclusive offers via email or call
+                </p>
               </div>
-              <button
-                type="submit"
-                className="flex items-center justify-center space-x-2 w-full"
-              >
+              <button type="submit" className="flex items-center justify-center space-x-2 w-full">
                 <img src="/images/img_submit_icon.svg" alt="submit" className="w-13 h-13" />
               </button>
             </form>
