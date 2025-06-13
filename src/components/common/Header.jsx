@@ -7,8 +7,8 @@ const Header = () => {
   return (
     <>
       {/* Top Header */}
-      <div className="bg-[#0c2d46] text-white w-full">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm h-[45px] md:h-[45px]">
+      <div className="bg-[#0c2d46] text-white w-full flex justify-center">
+        <div className="max-w-[1440px] w-full px-4 flex flex-col md:flex-row justify-between items-center text-sm h-[45px] md:h-[45px]">
           <div className="flex items-center space-x-6 mb-2 md:mb-0">
             <div className="flex items-center space-x-2">
               <img src="/images/img_vector_yellow_800_16x20.svg" alt="email" className="w-4 h-5" />
@@ -34,8 +34,8 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-[#f6f6f6] py-4 md:py-6 w-full">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center relative">
+      <div className="bg-[#f6f6f6] py-2 md:py-3 w-full flex justify-center">
+        <div className="max-w-[1440px] w-full px-4 flex justify-between items-center relative">
           <div className="bg-[#f6f6f6] rounded-b-[40px] p-2 md:p-4">
             <img
               src="/images/img_group_25.svg"
