@@ -38,8 +38,8 @@ const HeroSection = () => {
       </div>
 
       {/* Course Stats Bar */}
-      <div className="bg-[#0c2d46] py-6">
-        <div className="max-w-5xl mx-auto px-4">
+      <div className="bg-[#0c2d46] py-6" style={{ width: '1178px', height: '98px', flexShrink: 0 }}>
+        <div className="max-w-5xl px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
             <div className="flex items-center space-x-3">
               <img src="/images/img_vector_yellow_800.svg" alt="duration" className="w-10 h-10" />

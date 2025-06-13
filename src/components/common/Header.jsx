@@ -7,61 +7,25 @@ const Header = () => {
   return (
     <>
       {/* Top Header */}
-      <div
-        className="bg-[#0c2d46] text-white"
-        style={{ width: '1440px', height: '45px', flexShrink: 0 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-6">
+      <div className="bg-[#0c2d46] text-white w-full">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm h-[45px] md:h-[45px]">
+          <div className="flex items-center space-x-6 mb-2 md:mb-0">
             <div className="flex items-center space-x-2">
               <img src="/images/img_vector_yellow_800_16x20.svg" alt="email" className="w-4 h-5" />
-              <span
-                style={{
-                  color: '#FFF',
-                  fontFamily: 'Poppins',
-                  fontSize: '16px',
-                  fontStyle: 'normal',
-                  fontWeight: 500,
-                  lineHeight: 'normal',
-                }}
-              >
+              <span className="text-white font-medium text-sm md:text-base">
                 hello@demont.ac.ae
               </span>
             </div>
             <div className="flex items-center space-x-2">
               <img src="/images/img_vector_yellow_800_38x30.svg" alt="phone" className="w-4 h-3" />
-              <span
-                style={{
-                  color: '#FFF',
-                  fontFamily: 'Poppins',
-                  fontSize: '16px',
-                  fontStyle: 'normal',
-                  fontWeight: 500,
-                  lineHeight: 'normal',
-                }}
-              >
-                800 33 666 8
-              </span>
+              <span className="text-white font-medium text-sm md:text-base">800 33 666 8</span>
             </div>
           </div>
-          <div
-            className="flex items-center space-x-6"
-            style={{
-              color: '#FFF',
-              fontFamily: 'Poppins',
-              fontSize: '16px',
-              fontStyle: 'normal',
-              fontWeight: 500,
-              lineHeight: 'normal',
-            }}
-          >
+          <div className="flex items-center space-x-6 text-white font-medium text-sm md:text-base">
             <span>Why Study in the UAE?</span>
             <span>Our Blogs</span>
             <span>Careers</span>
-            <div
-              className="bg-[#eca22d] px-6 py-2 rounded-none flex items-center space-x-2"
-              style={{ width: '112px', height: '45px', flexShrink: 0 }}
-            >
+            <div className="bg-[#eca22d] px-4 md:px-6 py-2 rounded-none flex items-center space-x-2 cursor-pointer">
               <span>Apply</span>
               <img src="/images/img_vector_white_a700.svg" alt="arrow" className="w-2 h-3" />
             </div>
@@ -70,20 +34,38 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div
-        className="bg-[#f6f6f6] py-6"
-        style={{ width: '1440px', height: '111px', flexShrink: 0 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <div className="bg-[#f6f6f6] rounded-b-[40px] p-4">
-            <img src="/images/img_group_25.svg" alt="DIIT Logo" className="h-[71px] w-[234px]" />
+      <div className="bg-[#f6f6f6] py-4 md:py-6 w-full">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center relative">
+          <div className="bg-[#f6f6f6] rounded-b-[40px] p-2 md:p-4">
+            <img
+              src="/images/img_group_25.svg"
+              alt="DIIT Logo"
+              className="h-10 md:h-[71px] w-auto md:w-[234px]"
+            />
           </div>
-          <nav className="flex items-center space-x-8">
+          {/* Hamburger for mobile */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-black mb-1 transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
+            ></span>
+            <span
+              className={`block w-6 h-0.5 bg-black mb-1 transition-all ${isMenuOpen ? 'opacity-0' : ''}`}
+            ></span>
+            <span
+              className={`block w-6 h-0.5 bg-black transition-all ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+            ></span>
+          </button>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
             <Link to="/about" className="text-black hover:text-[#eca22d] font-medium">
               About Us
             </Link>
             <div className="w-px h-8 bg-black/20"></div>
-            <div className="flex items-center space-x-2 text-[#eca22d] font-medium">
+            <div className="flex items-center space-x-2 text-[#eca22d] font-medium cursor-pointer">
               <span>Programs</span>
               <img
                 src="/images/img_vector_yellow_800_11x8.svg"
@@ -96,7 +78,7 @@ const Header = () => {
               Our Partners
             </Link>
             <div className="w-px h-8 bg-black/20"></div>
-            <div className="flex items-center space-x-2 text-black hover:text-[#eca22d] font-medium">
+            <div className="flex items-center space-x-2 text-black hover:text-[#eca22d] font-medium cursor-pointer">
               <span>DeMont Plus</span>
               <img src="/images/img_vector_black_900_11x8.svg" alt="dropdown" className="w-3 h-2" />
             </div>
@@ -109,6 +91,61 @@ const Header = () => {
               Life at DeMont
             </Link>
           </nav>
+          {/* Mobile Nav */}
+          {isMenuOpen && (
+            <nav className="absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg flex flex-col z-50 md:hidden animate-fade-in">
+              <Link
+                to="/about"
+                className="px-6 py-3 border-b hover:bg-gray-100 text-black font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Us
+              </Link>
+              <button
+                className="px-6 py-3 border-b flex items-center space-x-2 text-[#eca22d] font-medium hover:bg-gray-100 text-left"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>Programs</span>
+                <img
+                  src="/images/img_vector_yellow_800_11x8.svg"
+                  alt="dropdown"
+                  className="w-3 h-2"
+                />
+              </button>
+              <Link
+                to="/partners"
+                className="px-6 py-3 border-b hover:bg-gray-100 text-black font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Our Partners
+              </Link>
+              <button
+                className="px-6 py-3 border-b flex items-center space-x-2 text-black font-medium hover:bg-gray-100 text-left"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>DeMont Plus</span>
+                <img
+                  src="/images/img_vector_black_900_11x8.svg"
+                  alt="dropdown"
+                  className="w-3 h-2"
+                />
+              </button>
+              <Link
+                to="/business-challenge"
+                className="px-6 py-3 border-b hover:bg-gray-100 text-black font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Business Challenge
+              </Link>
+              <Link
+                to="/life-at-demont"
+                className="px-6 py-3 hover:bg-gray-100 text-black font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Life at DeMont
+              </Link>
+            </nav>
+          )}
         </div>
       </div>
     </>
