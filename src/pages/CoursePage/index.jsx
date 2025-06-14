@@ -4,53 +4,49 @@ import Footer from '../../components/common/Footer';
 import HeroSection from '../../components/common/HeroSection';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
+import SubmitScreen from '../CoursePage/SubmitScreen';
+import ScrollToTop from '../../components/ui/ScrollToTop';
 import './index.css';
 
 const CoursePage = () => {
+  // State for contact form
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
     course: '',
     phone: '',
   });
-
+  // UI state
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedSection, setExpandedSection] = useState('Higher National Diploma');
+  const [showSubmitScreen, setShowSubmitScreen] = useState(false);
 
+  // Handler functions grouped and named clearly
   const handleContactFormChange = (e) => {
     const { name, value } = e.target;
-    setContactForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setContactForm((prev) => ({ ...prev, [name]: value }));
   };
-
   const handleContactSubmit = (e) => {
     e.preventDefault();
-    console.log('Contact form submitted:', contactForm);
     alert('Thank you for your interest! Our admission team will contact you soon.');
   };
-
-  const handleScheduleCall = () => {
-    alert('Call scheduled! Our team will contact you within 24 hours.');
+  const handleScheduleCall = (e) => {
+    if (e) e.preventDefault();
+    setShowSubmitScreen(true);
   };
-
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? '' : section);
   };
 
+  // Data arrays and constants grouped at the top
   const skills = [
     { icon: '/images/img_ellipse_21.png', title: 'Programming Proficiency' },
     { icon: '/images/img_ellipse_24.png', title: 'Software Design Principles' },
-    {
-      icon: '/images/img_ellipse_22.png',
-      title: 'Object-Oriented Programming',
-    },
+    { icon: '/images/img_ellipse_22.png', title: 'Object-Oriented Programming' },
     { icon: '/images/img_ellipse_27.png', title: 'Agile Development' },
     { icon: '/images/img_ellipse_25.png', title: 'Software Documentation' },
     { icon: '/images/img_ellipse_26.png', title: 'Critical Thinking' },
   ];
-
   const jobOpportunities = [
     'Software Developer',
     'Web Developer',
@@ -59,7 +55,6 @@ const CoursePage = () => {
     'Software Tester',
     'Technical Support Engineer',
   ];
-
   const coreModules = [
     { name: 'Programming', credit: '15' },
     { name: 'Networking', credit: '15' },
@@ -77,7 +72,6 @@ const CoursePage = () => {
     { name: 'Operating Systems', credit: '15' },
     { name: 'Cloud Computing', credit: '15' },
   ];
-
   const relatedCourses = [
     {
       title: 'Higher National Diploma International in Computing (Cyber Security)',
@@ -96,7 +90,6 @@ const CoursePage = () => {
       image: '/images/img_rectangle_10_191x308.png',
     },
   ];
-
   const courseCategories = [
     'Higher National Diploma',
     'Foundation',
@@ -104,7 +97,6 @@ const CoursePage = () => {
     'Teacher Education',
     'Certification Programs',
   ];
-
   const coursesData = {
     'Higher National Diploma': [
       'International In Computing (Software Engineering)',
@@ -117,14 +109,15 @@ const CoursePage = () => {
     ],
   };
 
+  // Main render
   return (
     <div className="w-full flex justify-center bg-white">
       <div className="max-w-[1440px] w-full flex flex-col min-h-screen">
-        <Header />
-        <HeroSection />
+        <Header data-aos="fade-down" />
+        <HeroSection data-aos="fade-up" />
 
         {/* Action Buttons */}
-        <div className="flex space-x-8 pt-10 px-8">
+        <div className="flex space-x-8 pt-10 px-8" data-aos="fade-up" data-aos-delay="100">
           <div className="flex items-center space-x-4">
             <div className="w-1 h-8 bg-[#0c2d46]"></div>
             <div className="flex items-center space-x-4">
@@ -151,7 +144,7 @@ const CoursePage = () => {
         </div>
 
         {/* Programme Overview */}
-        <section className="pt-16 bg-white w-full">
+        <section className="pt-16 bg-white w-full" data-aos="fade-up" data-aos-delay="200">
           <div className="max-w-[1440px] mx-auto px-8">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
               <div className="flex-1">
@@ -265,10 +258,10 @@ const CoursePage = () => {
                       </div>
 
                       <Button
-                        type="submit"
+                        type="button"
                         variant="primary"
                         className="w-full bg-[#eca22d] text-white rounded-[15px] py-3 mt-6"
-                        onClick={handleScheduleCall}
+                        // onClick={handleScheduleCall}
                       >
                         <span>Schedule a Call</span>
                         <img
@@ -282,11 +275,16 @@ const CoursePage = () => {
                 </div>
               </div>
             </div>
+            {showSubmitScreen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+                <SubmitScreen onClose={() => setShowSubmitScreen(false)} />
+              </div>
+            )}
           </div>
         </section>
 
         {/* Top Skills Section */}
-        <section className="py-16 bg-[#fafbfb] w-full">
+        <section className="py-16 bg-[#fafbfb] w-full" data-aos="fade-up" data-aos-delay="300">
           <div className="max-w-[1440px] mx-auto px-8">
             <h2 className="text-4xl font-medium text-center mb-12">
               <span className="text-black">Top </span>
@@ -308,7 +306,7 @@ const CoursePage = () => {
         </section>
 
         {/* Job Opportunities */}
-        <section className="bg-white relative w-full">
+        <section className="bg-white relative w-full" data-aos="fade-up" data-aos-delay="400">
           <div className="max-w-[1440px] mx-auto px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
@@ -346,7 +344,7 @@ const CoursePage = () => {
         </section>
 
         {/* Who Is This Programme For */}
-        <section className="py-16 bg-[#0c2d46] w-full">
+        <section className="py-16 bg-[#0c2d46] w-full" data-aos="fade-up" data-aos-delay="500">
           <div className="max-w-[1440px] mx-auto px-8">
             <h2 className="text-4xl font-medium mb-8">
               <span className="text-[#eca22d]">Who</span>
@@ -363,7 +361,7 @@ const CoursePage = () => {
         </section>
 
         {/* Minimum Eligibility & Awarding Body */}
-        <section className="py-16 bg-white w-full">
+        <section className="py-16 bg-white w-full" data-aos="fade-up" data-aos-delay="600">
           <div className="max-w-[1440px] mx-auto px-8 space-y-12">
             {/* Minimum Eligibility */}
             <div>
@@ -398,71 +396,97 @@ const CoursePage = () => {
         </section>
 
         {/* Core Modules & Key Learnings */}
-        <section className="py-16 bg-white w-full">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Core Modules */}
-              <div>
-                <h2 className="text-4xl font-light text-black mb-8">Core Modules</h2>
-                <Card className="border border-[#e6e6e6] rounded-[25px] overflow-hidden">
-                  <div className="p-5">
-                    <div className="grid grid-cols-2 gap-8 mb-8">
-                      <h3 className="text-2xl font-medium text-black">Module Name</h3>
-                      <h3 className="text-2xl font-medium text-black">Credit</h3>
-                    </div>
-                    <div className="space-y-6">
-                      {coreModules.map((module, index) => (
-                        <div key={index}>
-                          <div className="grid grid-cols-2 gap-8 py-2">
-                            <p className="text-base font-light text-black">{module.name}</p>
-                            <p className="text-base font-light text-black">{module.credit}</p>
-                          </div>
-                          {index < coreModules.length - 1 && (
-                            <div className="w-full h-px bg-[#e6e6e6] mt-4"></div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              {/* Key Learnings */}
-              <div>
-                <h2 className="text-4xl font-light text-black mb-8">Key Learnings</h2>
-                <div className="space-y-8">
-                  <div className="flex items-start space-x-4">
-                    <img src="/images/img_line_36.svg" alt="bullet" className="w-1 h-2 mt-2" />
-                    <p className="text-base font-light text-black leading-6">
-                      Gain the essential knowledge, understanding, and skills required for a
-                      successful career in the computing industry, equipping you with a solid
-                      foundation to excel in various roles.
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <img src="/images/img_line_36.svg" alt="bullet" className="w-1 h-2 mt-2" />
-                    <p className="text-base font-light text-black leading-6">
-                      Develop a versatile skill set through the effective integration of knowledge
-                      and skills gained across different program components, enabling you to tackle
-                      multifaceted challenges in the computing industry.
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <img src="/images/img_line_36.svg" alt="bullet" className="w-1 h-2 mt-2" />
-                    <p className="text-base font-light text-black leading-6">
-                      Gain flexibility, knowledge, skills, and motivation that serve as a solid
-                      foundation for ongoing studies and career advancement in the dynamic realm of
-                      computing.
-                    </p>
+        <section className="py-8 bg-white w-full" data-aos="fade-up" data-aos-delay="700">
+          <div className="max-w-[1440px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Core Modules */}
+            <div>
+              <h2
+                className="text-[2.25rem] font-light text-black mb-4 leading-tight"
+                style={{
+                  color: '#000',
+                  fontFamily: 'Poppins',
+                  fontSize: '40px',
+                  fontStyle: 'normal',
+                  fontWeight: 275,
+                  lineHeight: 'normal',
+                }}
+              >
+                Core Modules
+              </h2>
+              <div
+                className="rounded-[20px] border border-[#e6e6e6] bg-white p-0 shadow-none overflow-hidden"
+                style={{ boxShadow: '0 0 0 1px #e6e6e6', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                <div className="px-8 pt-8 pb-4">
+                  <div className="grid grid-cols-2 mb-2">
+                    <h3 className="text-[1.50rem] font-Poppins text-black">Module Name</h3>
+                    <h3 className="text-[1.50rem] font-Poppins text-black text-right">Credit</h3>
                   </div>
                 </div>
+                <div className="px-8 pb-8">
+                  {coreModules.map((module, index) => (
+                    <div
+                      key={index}
+                      className="grid grid-cols-2 py-1 border-t border-[#e6e6e6] first:border-t-0"
+                    >
+                      <p className="text-[1rem] font-normal text-black whitespace-pre-line">
+                        {module.name}
+                      </p>
+                      <p className="text-[1rem] font-normal text-black text-right">
+                        {module.credit}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
+            </div>
+            {/* Key Learnings */}
+            <div>
+              <h2
+                className="text-[2.25rem] font-light text-black mb-4 leading-tight"
+                style={{
+                  color: '#000',
+                  fontFamily: 'Poppins',
+                  fontSize: '40px',
+                  fontStyle: 'normal',
+                  fontWeight: 275,
+                  lineHeight: 'normal',
+                }}
+              >
+                Key Learnings
+              </h2>
+              <ul className="space-y-6">
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 w-2 h-2 rounded-full bg-[#f6b432] inline-block"></span>
+                  <span className="text-[1rem] font-normal text-[#444] leading-6">
+                    Gain the essential knowledge, understanding, and skills required for a
+                    successful career in the computing industry, equipping you with a solid
+                    foundation to excel in various roles.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 w-2 h-2 rounded-full bg-[#f6b432] inline-block"></span>
+                  <span className="text-[1rem] font-normal text-[#444] leading-6">
+                    Develop a versatile skill set through the effective integration of knowledge and
+                    skills gained across different program components, enabling you to tackle
+                    multifaceted challenges in the computing industry.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 w-2 h-2 rounded-full bg-[#f6b432] inline-block"></span>
+                  <span className="text-[1rem] font-normal text-[#444] leading-6">
+                    Gain flexibility, knowledge, skills, and motivation that serve as a solid
+                    foundation for ongoing studies and career advancement in the dynamic realm of
+                    computing
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
         {/* Related Courses */}
-        <section className="py-16 bg-white w-full">
+        <section className="py-16 bg-white w-full" data-aos="fade-up" data-aos-delay="800">
           <div className="max-w-[1440px] mx-auto px-8">
             <h2 className="text-4xl font-medium mb-12">
               <span className="text-black">Related </span>
@@ -506,7 +530,7 @@ const CoursePage = () => {
                 </Card>
               ))}
             </div>
-            <div className="flex items-center justify-center mt-12">
+            <div className="flex items-center mt-12">
               <div className="flex items-center space-x-4">
                 <span className="text-2xl font-medium text-black">Explore All Programs</span>
                 <div className="bg-[#879da5] rounded-full w-5 h-5 flex items-center justify-center">
@@ -521,74 +545,84 @@ const CoursePage = () => {
           </div>
         </section>
 
-        {/* Academic Partners */}
-        <section className="py-16 bg-[#e7ebed] w-full">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                <div className="bg-[#0c2d46] rounded-[25px] p-8 relative">
-                  <div className="bg-white rounded-t-[18px] p-8 mb-6">
-                    <img
-                      src="/images/img_pearson.png"
-                      alt="Pearson"
-                      className="h-16 w-55 mx-auto"
-                    />
-                  </div>
-                  <p className="text-base font-light text-white leading-6 mb-8">
-                    A leading global organization focused on enhancing management and leadership
-                    capabilities through accreditation, qualifications, and resources.
-                  </p>
-                  <div className="flex space-x-0">
-                    <div className="bg-white rounded-l-[15px] px-7 py-2">
-                      <span className="text-base font-semibold text-black">Get in touch!</span>
-                    </div>
-                    <div className="bg-[#eca22d] rounded-r-[15px] px-9 py-2 flex items-center space-x-2">
-                      <span className="text-base font-semibold text-white">Know More</span>
-                      <img src="/images/img_vector_black_900.svg" alt="arrow" className="w-4 h-2" />
-                    </div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-white rounded-[23px] p-8 shadow-md">
-                    <img
-                      src="/images/img_ncfelogorgbgrey.png"
-                      alt="NCFE"
-                      className="h-11 w-49 mx-auto"
-                    />
-                  </Card>
-                  <Card className="bg-white rounded-[23px] p-8 shadow-md">
-                    <img
-                      src="/images/img_charteredmanagementinstitutecmivectorlogo.png"
-                      alt="CMI"
-                      className="h-20 w-45 mx-auto"
-                    />
-                  </Card>
-                </div>
+        {/* Academic Partners Section - Redesigned as per screenshot */}
+        <section
+          className="w-full bg-[#edf1f4] py-12 flex justify-center items-center"
+          data-aos="fade-up"
+        >
+          <div className="max-w-[1200px] w-full flex flex-col md:flex-row gap-10 md:gap-16 items-center justify-between">
+            {/* Left: Pearson Card */}
+            <div className="flex flex-col bg-white rounded-[24px] shadow-md border-2 border-[#18304b] max-w-[370px] w-full min-h-[420px] p-0 overflow-hidden">
+              <div className="flex items-center justify-center h-[140px] bg-white border-b border-[#e5e7eb]">
+                <img
+                  src="/public/images/img_pearson.png"
+                  alt="Pearson"
+                  className="h-16 object-contain"
+                />
+                <span className="ml-4 text-[#18304b] text-2xl font-medium">Pearson</span>
               </div>
-              <div className="space-y-6">
-                <h2 className="text-4xl font-medium">
-                  <span className="text-black">Discover Our Academic </span>
-                  <span className="text-[#eca22d]">Partners</span>
-                </h2>
-                <p className="text-base font-light text-black leading-6">
-                  DeMont Institute of Management and Technology proudly collaborates with top
-                  institutions globally, ensuring our students receive world-class higher education.
+              <div className="flex-1 bg-[#18304b] px-6 py-6 flex flex-col justify-between">
+                <p className="text-white text-sm leading-relaxed mb-8">
+                  A leading global organization focused on enhancing management and leadership
+                  capabilities through accreditation, qualifications, and resources.
                 </p>
+                <div className="flex w-full gap-2">
+                  <button className="flex-1 bg-white text-[#18304b] font-semibold py-2 rounded-[8px] shadow-none border-none text-sm hover:bg-gray-100 transition">
+                    Get in touch!
+                  </button>
+                  <button className="flex-1 bg-[#f6b234] text-[#18304b] font-semibold py-2 rounded-[8px] shadow-none border-none text-sm hover:bg-yellow-400 transition">
+                    Know More &gt;
+                  </button>
+                </div>
               </div>
+            </div>
+            {/* Center: NCFE and CMI Cards */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-white rounded-[24px] shadow-md flex items-center justify-center w-[344px] h-[200px]">
+                <img
+                  src="/public/images/img_ncfelogorgbgrey.png"
+                  alt="NCFE"
+                  className="h-12 object-contain"
+                />
+              </div>
+              <div className="bg-white rounded-[24px] shadow-md flex items-center justify-center w-[344px] h-[200px]">
+                <img
+                  src="/public/images/img_charteredmanagementinstitutecmivectorlogo.png"
+                  alt="CMI"
+                  className="h-12 object-contain"
+                />
+              </div>
+            </div>
+            {/* Right: Text Content */}
+            <div className="flex-1 max-w-[400px]">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#111827] leading-tight mb-4">
+                Discover Our
+                <br />
+                Academic <span className="text-[#f6b234]">Partners</span>
+              </h2>
+              <p className="text-[#6b7280] text-base leading-relaxed mb-2">
+                <span className="font-semibold text-[#111827]">DeMont</span> Institute of Management
+                and Technology proudly collaborates with top institutions globally, ensuring our
+                students receive world-class higher education.
+              </p>
             </div>
           </div>
         </section>
 
         {/* Explore Our Courses */}
-        <section className="py-16 bg-white relative w-full">
+        <section
+          className="py-16 bg-white relative w-full"
+          data-aos="fade-up"
+          data-aos-delay="1000"
+        >
           <div className="max-w-[1440px] mx-auto px-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+            <div className="flex flex-col md:flex-row md:items-center gap-80 mb-8">
               <h2 className="text-4xl font-medium mb-4 md:mb-0 flex-shrink-0">
                 <span className="text-black">Explore </span>
                 <span className="text-[#eca22d]">Our Courses</span>
               </h2>
               <div className="w-full md:w-[420px]">
-                <div className="bg-[#f0f0f0] rounded-[25px] shadow-md p-2 pl-6 flex items-center">
+                <div className="bg-[#f0f0f0] rounded-[25px] shadow-md p-2 pl-6 flex items-center w-[700px] h-[57px]">
                   <input
                     type="text"
                     placeholder="Search for Courses..."
@@ -596,7 +630,7 @@ const CoursePage = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="flex-1 bg-transparent text-xl font-light text-black placeholder-black outline-none"
                   />
-                  <button className="bg-[#879da5] rounded-r-[25px] p-4 shadow-md flex items-center justify-center">
+                  <button className="bg-[#879da5] rounded-r-[25px] p-3 shadow-md flex items-center justify-center">
                     <img
                       src="/images/img_vector_white_a700_15x33.svg"
                       alt="search"
@@ -628,7 +662,7 @@ const CoursePage = () => {
                         />
                       </div>
                       {expandedSection === category && coursesData[category] && (
-                        <div className="bg-white border-l-4 border-[#0c2d46] pl-8 md:pl-32 py-4 space-y-3">
+                        <div className="bg-white pl-8 md:pl-32 py-4 space-y-3">
                           <ul className="list-disc ml-4 md:ml-0">
                             {coursesData[category].map((course, courseIndex) => (
                               <li
@@ -701,7 +735,7 @@ const CoursePage = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-16 bg-[#f5fafc] w-full">
+        <section className="py-16 bg-[#f5fafc] w-full" data-aos="fade-up" data-aos-delay="1100">
           <div className="max-w-[1440px] mx-auto px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Contact Us */}
@@ -739,14 +773,15 @@ const CoursePage = () => {
                 <h3 className="text-xl font-medium text-black">We are here to guide you</h3>
                 <p className="text-xl font-light text-black">+971 58 625 0566</p>
                 <p className="text-xl font-medium text-black text-center">
-                  Chat with an Admission Counselor
+                  Chat with an Admission <br /> Counselor
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <Footer />
+        <Footer data-aos="fade-up" data-aos-delay="1200" />
+        <ScrollToTop />
       </div>
     </div>
   );

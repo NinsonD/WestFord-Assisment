@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Footer component with grouped state, handlers, and clear structure
 const Footer = () => {
+  // State for contact form
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,6 +12,7 @@ const Footer = () => {
     agreeToContact: false,
   });
 
+  // Handler functions
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -17,13 +20,12 @@ const Footer = () => {
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
   };
 
+  // Main render
   return (
     <footer
       className="bg-[#0c2d46] text-white w-full flex justify-center"
@@ -72,7 +74,6 @@ const Footer = () => {
                 />
               </div>
             </div>
-
             {/* Menu */}
             <div className="space-y-6">
               <h3 className="text-2xl font-medium">Menu</h3>
@@ -109,7 +110,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-
             {/* Information */}
             <div className="space-y-6">
               <h3 className="text-2xl font-medium">Information</h3>
@@ -146,7 +146,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-
             {/* Contact Form */}
             <div className="space-y-6">
               <h3 className="text-2xl font-medium">Get in Touch</h3>
@@ -225,7 +224,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         {/* Copyright */}
         <div className="bg-[#f5fafc] py-4">
           <div className="max-w-7xl mx-auto px-4 text-center">

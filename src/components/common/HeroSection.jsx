@@ -5,7 +5,7 @@ const HeroSection = () => {
     <section className="w-full flex justify-center bg-white">
       <div className="max-w-[1440px] w-full relative">
         {/* Back to Programs Link */}
-        <div className="mx-auto pt-6">
+        <div className="mx-auto pt-24">
           <div className="flex items-center space-x-2 text-black">
             <img src="/images/img_vector_black_900_8x11.svg" alt="back arrow" className="w-2 h-3" />
             <span className="text-base font-medium">Back to all Programs</span>
@@ -13,13 +13,13 @@ const HeroSection = () => {
         </div>
 
         {/* Pearson Badge */}
-        <div className="bg-[#f6f6f6] rounded-r-[54px] p-6 w-[250px] mt-[30px]">
+        <div className="bg-[#f6f6f6] rounded-r-[54px] p-5 w-[250px] mt-[30px] absolute left-0 top-18">
           <img src="/images/img_pearson.png" alt="Pearson" className="h-14 w-47" />
         </div>
 
         {/* Main Hero Content */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-20">
             {/* Left Content */}
             <div className="space-y-8 my-20">
               <div className="space-y-4">
@@ -27,10 +27,11 @@ const HeroSection = () => {
                   style={{
                     color: '#000',
                     fontFamily: 'Poppins',
-                    fontSize: '40px',
+                    fontSize: '33px',
                     fontStyle: 'normal',
                     fontWeight: 300,
                     lineHeight: 'normal',
+                    bold: true,
                   }}
                 >
                   Higher National diploma international
@@ -39,7 +40,7 @@ const HeroSection = () => {
                   style={{
                     color: '#000',
                     fontFamily: 'Poppins',
-                    fontSize: '30px',
+                    fontSize: '23px',
                     fontStyle: 'normal',
                     fontWeight: 300,
                     lineHeight: 'normal',
@@ -51,13 +52,15 @@ const HeroSection = () => {
             </div>
 
             {/* Right Content - Course Image */}
-            <div className="flex justify-center absolute right-[0px]">
-              <img
-                src="/images/img_rectangle_58.png"
-                alt="Computing Course"
-                className="w-full max-w-[750px] h-[700px] object-cover rounded-lg"
-              />
-            </div>
+            <div
+              className="flex-shrink-0 absolute right-0 top-0"
+              style={{
+                width: '600px',
+                height: '560px',
+                background: "url('/images/img_rectangle_58.png') 0 0 / cover no-repeat",
+                overflow: 'hidden',
+              }}
+            />
           </div>
         </div>
 
