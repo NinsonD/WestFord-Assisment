@@ -73,8 +73,8 @@ const Header = () => {
               <div className="w-px h-8 bg-black/20"></div>
               <div
                 className="flex items-center space-x-2 text-[#eca22d] font-medium cursor-pointer relative"
-                onMouseEnter={() => setIsProgramsOpen(true)}
-                onMouseLeave={() => setIsProgramsOpen(false)}
+                // onMouseEnter={() => setIsProgramsOpen(true)}
+                // onMouseLeave={() => setIsProgramsOpen(false)}
               >
                 <span>Programs</span>
                 <img
